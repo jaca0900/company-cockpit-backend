@@ -1,0 +1,9 @@
+Stworzyć bazę działającą w sieci globalnej
+Przykłady baz danych:
+  - Baza kooperantów ze stanów zjednoczonych
+1. W opisie należy podać listę atrybutów i tabel z powiązaniami.
+2. Jakie dane przechowuje
+3. Model Bazy danych
+4. Fragmenty kodu sql
+5. Jak chcesz liquiBase to opisz to narzędzie w metodyce
+6. źródła

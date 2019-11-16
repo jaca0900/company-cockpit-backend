@@ -2,12 +2,11 @@ import * as Express from 'express'
 import { MongoClient } from 'mongodb';
 import { RoutesManager } from './src/routing/routes/routes';
 import * as env from './config/environments';
+import * as bodyParser from 'body-parser'
 
-const bodyParser = require('body-parser');
 const environment = env.get();
 const port: number = environment.port;
 const app: Express.Application = Express();
-const router: Express.Router = Express.Router();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -27,5 +26,5 @@ app.listen(port, () => {
   console.log(`Ready on http://localhost:${port} !`);
 });
 
-let routes = new RoutesManager(app, router);
+let routes = new RoutesManager(app);
 routes.registerAll();

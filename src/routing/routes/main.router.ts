@@ -1,6 +1,6 @@
 import * as Express from 'express';
 import { IRoute } from '../models/route.models';
-import {StarterController} from "../../components/starter.controller";
+import { StarterController } from "../../components/starter.controller";
 
 export class MainRouter implements IRoute {
   private starterController: StarterController;

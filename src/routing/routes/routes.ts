@@ -8,9 +8,9 @@ export class RoutesManager {
   myRoutes: IRoute[];
 
   //import and init all routes
-  constructor(private app: Express.Application, private router:Express.Router) {
+  constructor(private app: Express.Application) {
     this.myRoutes = [
-      new MainRouter(app, router) // all routes imported after this one will require auth to access
+      new MainRouter(app, Express.Router()) // all routes imported after this one will require auth to access
     ];
   }
 
