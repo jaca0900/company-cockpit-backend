@@ -3,11 +3,11 @@ import { ICore } from "./core.interface";
 
 export interface ISequelizeModel
   <M extends CoreModel<M>, I extends ICore> {
-  findAll(options?: { [key: string]: any }): Promise<I[]>;
+  findAll(options?: { [key: string]: any }): Promise<{ dataValues: I }[]>;
 
-  findByPk(options?: { [key: string]: any }): Promise<I>;
+  findByPk(options?: { [key: string]: any }): Promise<{ dataValues: I }>;
 
-  findOne(options?: { [key: string]: any }): Promise<I>;
+  findOne(options?: { [key: string]: any }): Promise<{ dataValues: I }>;
 
   build(record?: I, options?: { [key: string]: any }): M;
 

@@ -19,8 +19,14 @@ export class CoreDao<M extends CoreModel<M>, I extends ICore> {
     });
   }
 
+  public findOne(options: { [key: string]: any }): Promise<I> {
+    return this.Model.findOne(options)
+      .then(res => res.dataValues);
+  }
+
   public findAll(options: { [key: string]: any }): Promise<I[]> {
-    return this.Model.findAll(options);
+    return this.Model.findAll(options)
+      .then(res => res.map(r => r.dataValues));
   }
 
   public destroy(options: { [key: string]: any }): Promise<Number> {
