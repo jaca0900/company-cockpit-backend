@@ -3,7 +3,6 @@ import { Table, Column } from "sequelize-typescript";
 
 export class CoreDao<M extends CoreModel<M>, I extends ICore> {
 
-  // TODO create or get A model interface
   constructor (
     private Model: ISequelizeModel<M, I>) {}
 
@@ -21,7 +20,7 @@ export class CoreDao<M extends CoreModel<M>, I extends ICore> {
 
   public findOne(options: { [key: string]: any }): Promise<I> {
     return this.Model.findOne(options)
-      .then(res => res.dataValues);
+      .then(res => res ? res.dataValues : null);
   }
 
   public findAll(options: { [key: string]: any }): Promise<I[]> {
@@ -33,26 +32,3 @@ export class CoreDao<M extends CoreModel<M>, I extends ICore> {
     return this.Model.destroy(options);
   }
 }
-
-// @Table
-// class CompanyModel extends CoreModel<CompanyModel> {
-  
-//   @Column
-//   nip: string;
-// }
-
-// interface ICompany extends ICore {
-//   nip: string;
-// }
-
-// class CompanyDao extends CoreDao<CompanyModel, ICompany> {
-//   constructor() {
-//     super(<ISequelizeModel<
-//       CompanyModel, ICompany>> CompanyModel);
-//   }
-
-//   public build(data: ICompany) {
-
-//     return super.build(data);
-//   }
-// }
