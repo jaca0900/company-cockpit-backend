@@ -5,17 +5,11 @@ import { CoreModel } from '../../core/model/core.model';
 export class ProductModel extends CoreModel<ProductModel> {
 
   @Column
-  login: string;
+  name: string;
 
   @Column
-  password: string;
+  unit: string;
 
   @Column
-  e_mail: string;
-
-  @Column
-  first_name: string;
-
-  @Column
-  last_name: string;
+  unit_price: string;
 }

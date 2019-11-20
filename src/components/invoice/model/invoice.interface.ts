@@ -1,9 +1,13 @@
 import { ICore } from '../../core/model';
 
 export interface IInvoice extends ICore {
-  login: string;
-  password: string;
-  e_mail: string;
-  first_name: string;
-  last_name: string;
+
+  total_netto: number;
+  total_brutto: number;
+  type: string;
+
+  // foreign keys hasOne
+  seller_id: number;
+  buyer_id: number;
+  user_company_id: number;
 }

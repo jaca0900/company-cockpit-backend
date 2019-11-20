@@ -5,17 +5,21 @@ import { CoreModel } from '../../core/model/core.model';
 export class InvoiceModel extends CoreModel<InvoiceModel> {
 
   @Column
-  login: string;
+  total_netto: number;
 
   @Column
-  password: string;
+  total_brutto: number;
 
   @Column
-  e_mail: string;
+  type: string;
+
+  // foreign keys hasOne
+  @Column
+  seller_id: number;
 
   @Column
-  first_name: string;
+  buyer_id: number;
 
   @Column
-  last_name: string;
+  user_company_id: number;
 }

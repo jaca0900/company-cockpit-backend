@@ -5,17 +5,11 @@ import { CoreModel } from '../../core/model/core.model';
 export class PkdModel extends CoreModel<PkdModel> {
 
   @Column
-  login: string;
+  code: string;
 
   @Column
-  password: string;
+  description: string;
 
   @Column
-  e_mail: string;
-
-  @Column
-  first_name: string;
-
-  @Column
-  last_name: string;
+  vat: number;
 }
