@@ -6,9 +6,6 @@ export class CoreModel<T> extends Model<T> {
   @PrimaryKey
   @Column
   id: Number;
- 
-  // @Column
-  // birthday: Date;
 
   // @Column
   // createAt: Date;

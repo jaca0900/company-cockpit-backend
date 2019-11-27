@@ -5,7 +5,7 @@ import { UserDao } from './dao/user.dao';
 
 export class UserController extends CoreController<UserModel, IUser, UserDao> {
   constructor(private userDao: UserDao) {
-    super(new UserDao());
+    super(userDao);
   }
 
   // TODO: ADD JWT and password encyption
