@@ -1,12 +1,11 @@
 import * as Express from 'express';
 import { IRoute } from '../models/route.models';
-import { StarterController } from "../../components/starter.controller";
 
 export class MainRouter implements IRoute {
-  private starterController: StarterController;
+  private router: Express.Router;
 
-  constructor(private app: Express.Application, private router: Express.Router) {
-    this.starterController = new StarterController('IT LIVES!!!!!')
+  constructor(private app: Express.Application) {
+    this.router = Express.Router();
   }
 
   register() {
@@ -20,7 +19,7 @@ export class MainRouter implements IRoute {
 
     // this route wont be accessible until user succesfully authorizes
     this.router.get('/', (req, res) => {
-      res.status(200).send(this.starterController.say());
+      res.status(200).send('IT LIVES!!!!!!!');
     });
   }
 }
