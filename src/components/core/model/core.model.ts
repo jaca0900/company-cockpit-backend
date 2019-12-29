@@ -7,15 +7,9 @@ export class CoreModel<T> extends Model<T> {
   @Column
   id: Number;
 
-  // @Column
-  // createAt: Date;
+  @Column
+  createdAt: Date;
 
-  // @Column
-  // createdBy: Number;
-
-  // @Column
-  // updatedAt: Date;
-
-  // @Column
-  // updatedBy: Number
+  @Column
+  updatedAt: Date;
 }

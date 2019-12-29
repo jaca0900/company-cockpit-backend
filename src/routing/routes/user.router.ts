@@ -14,6 +14,14 @@ export class UserRouter implements IRoute {
   register() {
     this.app.use('/user', this.router);
 
+    this.router.get('/', bodyParser.json(), (req, res) => {
+      const query = req.body;
+
+      this.userController.getAll()
+        .then(users => res.status(200).json(users))
+        .catch(err => res.status(500).send(err.message));
+    });
+
     // this route wont be accessible until user succesfully authorizes
     this.router.post('/login', bodyParser.json(), (req, res) => {
       const query = req.body;

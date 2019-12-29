@@ -12,7 +12,7 @@ export class CoreDao<M extends CoreModel<M>, I extends ICore> {
     return model.save();
   }
 
-  public async update(id: number, data: I): Promise<[number, I[]]> {
+  public async update(id: Number, data: I): Promise<[number, I[]]> {
     return this.Model.update(data, { 
       where: { id }
     });

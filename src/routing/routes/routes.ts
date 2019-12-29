@@ -5,14 +5,13 @@ import { MainRouter } from './main.router';
 import { UserRouter } from './user.router';
 
 import { UserController, UserDao } from '../../components/user/index';
-import { ProductController, ProductDao } from '../../components/product/index';
-import { PkdController, PkdDao } from '../../components/pkd/index';
-import { InvoiceController, InvoiceDao } from '../../components/invoice/index';
-import { CompanyController, CompanyDao } from '../../components/company/index';
-import { ProductRouter } from './product.router';
-import { PkdRouter } from './pkd.router';
-import { InvoiceRouter } from './invoice.router';
+import { CompanyController, CompanyDao } from '../../components/company';
 import { CompanyRouter } from './company.router';
+import { InvoiceDao, InvoiceController } from '../../components/invoice';
+import { InvoiceRouter } from './invoice.router';
+import { ProductRouter } from './product.router';
+import { ProductController, ProductDao } from '../../components/product';
+import { InvoiceProductDao } from '../../components/invoiceProduct/dao/invoiceProduct.dao';
 
 export class RoutesManager {
   myRoutes: IRoute[];
@@ -21,26 +20,19 @@ export class RoutesManager {
   constructor(private app: Express.Application) {
     const userDao = new UserDao();
     const userController = new UserController(userDao);
-
-    const productDao = new ProductDao();
-    const productController = new ProductController(productDao);
-
-    const pkdDao = new PkdDao();
-    const pkdController = new PkdController(pkdDao);
-
-    const invoiceDao = new InvoiceDao();
-    const invoiceController = new InvoiceController(invoiceDao);
-
     const companyDao = new CompanyDao();
     const companyController = new CompanyController(companyDao);
+    const productDao: ProductDao = new ProductDao();
+    const productController: ProductController = new ProductController(productDao);
+    const invoiceDao: InvoiceDao = new InvoiceDao();
+    const invoiceController: InvoiceController = new InvoiceController(invoiceDao, new InvoiceProductDao, productDao);
 
     this.myRoutes = [
       new MainRouter(app), // all routes imported after this one will require auth to access
       new UserRouter(app, userController),
-      new ProductRouter(app, productController),
-      new PkdRouter(app, pkdController),
+      new CompanyRouter(app, companyController),
       new InvoiceRouter(app, invoiceController),
-      new CompanyRouter(app, companyController)
+      new ProductRouter(app, productController)
     ];
   }
 

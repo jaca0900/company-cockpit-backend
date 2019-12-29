@@ -51,7 +51,9 @@ CREATE TABLE IF NOT EXISTS invoice(
     total_netto DOUBLE,
     total_brutto DOUBLE,
     type VARCHAR(50),
-    user_company_id BIGINT UNSIGNED NOT NULL
+    FOREIGN KEY(seller_id) REFERENCES company(id),
+    FOREIGN KEY(buyer_id) REFERENCES company(id)
+    -- user_id BIGINT UNSIGNED NOT NULL
 )ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS product(

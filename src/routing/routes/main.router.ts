@@ -21,5 +21,10 @@ export class MainRouter implements IRoute {
     this.router.get('/', (req, res) => {
       res.status(200).send('IT LIVES!!!!!!!');
     });
+
+    this.router.all('/*', (req, res, next) => {
+      // check auth
+      next();
+    });
   }
 }
