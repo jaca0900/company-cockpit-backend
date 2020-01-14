@@ -1,5 +1,6 @@
-import { Column, Table } from 'sequelize-typescript';
+import { Column, Table, HasMany } from 'sequelize-typescript';
 import { CoreModel } from '../../core/model/core.model';
+import { InvoiceProductModel } from '../../invoiceProduct/model/invoiceProduct.model';
 
 @Table({ tableName: 'product'})
 export class ProductModel extends CoreModel<ProductModel> {
@@ -11,5 +12,8 @@ export class ProductModel extends CoreModel<ProductModel> {
   unit: string;
 
   @Column
-  unit_price: string;
+  unit_price: Number;
+
+  @HasMany(() => InvoiceProductModel)
+  invoiceProduct: InvoiceProductModel;
 }

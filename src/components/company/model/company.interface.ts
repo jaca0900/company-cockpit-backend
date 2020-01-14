@@ -1,7 +1,7 @@
 import { ICore } from '../../core/model';
 
 export interface ICompany extends ICore {
-  name: string;
   nip: string;
+  company_name: string;
   address: string;
 }

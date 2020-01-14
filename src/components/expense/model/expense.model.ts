@@ -1,15 +1,15 @@
 import { Column, Table } from 'sequelize-typescript';
 import { CoreModel } from '../../core/model/core.model';
 
-@Table({ tableName: 'pkd'})
-export class PkdModel extends CoreModel<PkdModel> {
+@Table({ tableName: 'expense'})
+export class ExpenseModel extends CoreModel<ExpenseModel> {
 
   @Column
-  code: string;
+  name: string;
 
   @Column
-  description: string;
+  unit: string;
 
   @Column
-  vat: string;
+  unit_price: Number;
 }

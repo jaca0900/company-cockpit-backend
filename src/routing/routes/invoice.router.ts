@@ -1,7 +1,8 @@
 import * as Express from 'express';
 import { IRoute } from '../models/route.models';
-import { InvoiceController, IInvoice } from '../../components/invoice/index';
-import bodyParser = require('body-parser');
+import { InvoiceController } from '../../components/invoice/index';
+import * as bodyParser from 'body-parser';
+import { IInvoice } from '../../components/invoice/model/invoice.interface';
 
 export class InvoiceRouter implements IRoute {
   // private starterController: StarterController;
@@ -16,31 +17,63 @@ export class InvoiceRouter implements IRoute {
 
     // this route wont be accessible until user succesfully authorizes
     this.router.get('/', (req, res) => {
-      this.invoiceController.getAll()
-        .then(response => res.status(200).json(response))
-        .catch(err => res.statsu(500).send(err.message));
+
+      return this.invoiceController.query({
+        include: [{ all: true }]
+      })
+        .then((companies) => res.status(200).json(companies))
+        .catch((err) => res.status(500).json(err));
+    });
+
+    this.router.get('/byBuyerId/:id', (req, res) => {
+
+      return this.invoiceController.query({
+        buyer_id: req.params.id
+      })
+        .then((invoices) => res.status(200).json(invoices))
+        .catch((err) => res.status(500).json(err));
+    });
+
+    this.router.get('/bySellerId/:id', (req, res) => {
+
+      return this.invoiceController.query({
+        buyer_id: req.params.id
+      })
+        .then((invoices) => res.status(200).json(invoices))
+        .catch((err) => res.status(500).json(err));
+    });
+
+    this.router.get('/detailed/:id', (req, res) => {
+      const id = parseInt(req.params.id);
+
+      return this.invoiceController.getDetailedInvoice(id)
+        .then((invoices) => res.status(200).json(invoices))
+        .catch((err) => res.status(500).json(err));
     });
 
     this.router.post('/', bodyParser.json(), (req, res) => {
-      const data: IInvoice = req.body;
+      const invoice: IInvoice = req.body;
 
-      this.invoiceController.save(data)
-        .then(response => res.status(200).json(response))
-        .catch(err => res.statsu(500).send(err.message));
+      return this.invoiceController.save(invoice)
+        .then(invoice => res.status(200).json(invoice))
+        .catch(error => res.status(500).json(error));
     });
 
     this.router.put('/:id', bodyParser.json(), (req, res) => {
-      const data: IInvoice = req.body;
+      const invoice: IInvoice = req.body;
+      const id: number = parseInt(req.params.id);
 
-      this.invoiceController.update(req.params.id, data)
-        .then(response => res.status(200).json(response))
-        .catch(err => res.statsu(500).send(err.message));
+      return this.invoiceController.update(id, invoice)
+        .then(invoice => res.status(200).json(invoice))
+        .catch(error => res.status(500).json(error));
     });
 
     this.router.delete('/:id', bodyParser.json(), (req, res) => {
-      this.invoiceController.delete(req.params.id)
-        .then(() => res.status(200).send('OK!'))
-        .catch(err => res.statsu(500).send(err.message));
+      const id: number = parseInt(req.params.id);
+
+      return this.invoiceController.delete(id)
+        .then(() => res.status(200).json({message: 'OK!'}))
+        .catch(error => res.status(500).json(error));
     });
   }
 }

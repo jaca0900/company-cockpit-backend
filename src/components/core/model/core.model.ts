@@ -1,6 +1,6 @@
 import { Column, Model, Table, PrimaryKey } from 'sequelize-typescript';
 
-@Table
+@Table({ timestamps: false })
 export class CoreModel<T> extends Model<T> {
 
   @PrimaryKey
@@ -8,14 +8,8 @@ export class CoreModel<T> extends Model<T> {
   id: Number;
 
   // @Column
-  // createAt: Date;
-
-  // @Column
-  // createdBy: Number;
+  // createdAt: Date;
 
   // @Column
   // updatedAt: Date;
-
-  // @Column
-  // updatedBy: Number
 }
