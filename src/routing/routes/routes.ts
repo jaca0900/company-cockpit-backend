@@ -5,7 +5,7 @@ import { MainRouter } from './main.router';
 import { UserRouter } from './user.router';
 
 import { UserController, UserDao } from '../../components/user/index';
-import { CompanyController, CompanyDao } from '../../components/company';
+import { CompanyController, CompanyDao, UserCompanyDao, UserCompanyController } from '../../components/company';
 import { CompanyRouter } from './company.router';
 import { InvoiceDao, InvoiceController } from '../../components/invoice';
 import { InvoiceRouter } from './invoice.router';
@@ -22,6 +22,8 @@ export class RoutesManager {
     const userController = new UserController(userDao);
     const companyDao = new CompanyDao();
     const companyController = new CompanyController(companyDao);
+    const userCompanyDao = new UserCompanyDao();
+    const userCompanyController = new UserCompanyController(userCompanyDao);
     const productDao: ProductDao = new ProductDao();
     const productController: ProductController = new ProductController(productDao);
     const invoiceDao: InvoiceDao = new InvoiceDao();
@@ -30,7 +32,7 @@ export class RoutesManager {
     this.myRoutes = [
       new MainRouter(app), // all routes imported after this one will require auth to access
       new UserRouter(app, userController),
-      new CompanyRouter(app, companyController),
+      new CompanyRouter(app, companyController, userCompanyController),
       new InvoiceRouter(app, invoiceController),
       new ProductRouter(app, productController)
     ];

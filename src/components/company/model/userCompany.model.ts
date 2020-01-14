@@ -1,15 +1,22 @@
-import { Column, Table, BelongsTo, BelongsToMany, HasMany } from 'sequelize-typescript';
+import { Column, Table, BelongsTo, ForeignKey } from 'sequelize-typescript';
 import { CoreModel } from '../../core/model/core.model';
+import { UserModel } from '../../user/model/user.model';
+import { CompanyModel } from './company.model';
 
 @Table({ tableName: 'user_company'})
 export class UserCompanyModel extends CoreModel<UserCompanyModel> {
 
+  @ForeignKey(() => UserModel)
   @Column
   user_id: string;
 
-  @Column
-  own_company_id: string;
+  @BelongsTo(() => UserModel)
+  user: UserModel
 
+  @ForeignKey(() => CompanyModel)
   @Column
-  contractor_id: string;
+  company_id: string;
+
+  @BelongsTo(() => CompanyModel)
+  company: CompanyModel
 }

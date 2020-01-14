@@ -7,4 +7,10 @@ export class CompanyController extends CoreController<CompanyModel, ICompany, Co
   constructor(private companyDao: CompanyDao) {
     super(companyDao);
   }
+
+  // async createForUser (userId, company) {
+  //   const saved = await super.save(company);
+    
+  //   return saved;
+  // }
 }

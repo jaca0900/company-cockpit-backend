@@ -8,13 +8,13 @@ export class CoreDao<M extends CoreModel<M>, I extends ICore> {
     private Model: ISequelizeModel<M, I>) {}
 
   public save (data: I): Promise<M> {
-    const model = this.Model.build(data);
+    const model = this.Model.build(ModelMaper.interfaceToModel(data));
 
     return model.save();
   }
 
   public async update(id: Number, data: I): Promise<[number, I[]]> {
-    return this.Model.update(data, { 
+    return this.Model.update(ModelMaper.interfaceToModel(data), { 
       where: { id }
     });
   }
