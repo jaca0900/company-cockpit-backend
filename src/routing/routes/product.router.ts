@@ -1,7 +1,7 @@
 import * as Express from 'express';
 import { IRoute } from '../models/route.models';
 import { ProductController } from '../../components/product/index';
-import bodyParser = require('body-parser');
+import * as bodyParser from 'body-parser';
 import { IProduct } from '../../components/product/model/product.interface';
 
 export class ProductRouter implements IRoute {

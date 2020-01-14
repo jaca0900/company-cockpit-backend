@@ -1,7 +1,7 @@
 import * as Express from 'express';
 import { IRoute } from '../models/route.models';
 import { PkdController } from '../../components/pkd/index';
-import bodyParser = require('body-parser');
+import * as bodyParser from 'body-parser';
 import { IPkd } from '../../components/pkd/model/pkd.interface';
 
 export class PkdRouter implements IRoute {

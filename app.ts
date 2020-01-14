@@ -3,7 +3,7 @@ import { RoutesManager } from './src/routing/routes/routes';
 import * as env from './config/environments';
 import * as bodyParser from 'body-parser';
 import {Sequelize} from 'sequelize-typescript';
-import { CoreModel } from './src/components/core/model/core.model';
+// import { CoreModel } from './src/components/core/model/core.model';
 
 const sequelize =  new Sequelize({
         database: 'CompanyManager',
@@ -21,7 +21,6 @@ const sequelize =  new Sequelize({
           first = first[0].toUpperCase() + first.slice(1);
           second = second[0].toUpperCase() + second.slice(1);
 
-          console.log(`${first}${second}`, member, `${first}${second}` === member);
           return `${first}${second}` === member;
         }
 });

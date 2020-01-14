@@ -1,7 +1,7 @@
 import * as Express from 'express';
 import { IRoute } from '../models/route.models';
 import { UserController } from '../../components/user/index';
-import bodyParser = require('body-parser');
+import * as bodyParser from 'body-parser';
 
 export class UserRouter implements IRoute {
   // private starterController: StarterController;

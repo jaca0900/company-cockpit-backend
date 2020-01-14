@@ -1,7 +1,7 @@
 import * as Express from 'express';
 import { IRoute } from '../models/route.models';
 import { CompanyController } from '../../components/company/index';
-import bodyParser = require('body-parser');
+import * as bodyParser from 'body-parser';
 import { ICompany } from '../../components/company/model/company.interface';
 
 export class CompanyRouter implements IRoute {
@@ -31,6 +31,16 @@ export class CompanyRouter implements IRoute {
         where: {
           id: req.params.id
         }
+      })
+        .then((companies) => res.status(200).json(companies))
+        .catch((err) => res.status(500).json(err));
+    });
+
+    this.router.get('/byUserId/:id', (req, res) => {
+      // TODO: updated to go by UserId
+
+      return this.companyController.query({
+        include: [{ all: true }]
       })
         .then((companies) => res.status(200).json(companies))
         .catch((err) => res.status(500).json(err));

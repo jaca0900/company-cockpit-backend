@@ -1,7 +1,7 @@
 import * as Express from 'express';
 import { IRoute } from '../models/route.models';
 import { ExpenseController } from '../../components/expense/index';
-import bodyParser = require('body-parser');
+import * as bodyParser from 'body-parser';
 import { ICompany } from '../../components/company/model/company.interface';
 import { IExpense } from '../../components/expense/model/expense.interface';
 

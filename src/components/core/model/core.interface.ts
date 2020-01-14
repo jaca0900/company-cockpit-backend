@@ -1,5 +1,5 @@
 export interface ICore {
   id: Number;
-  createdAt: Date;
-  updatedAt: Date;
+  // createdAt: Date;
+  // updatedAt: Date;
 }
