@@ -16,4 +16,7 @@ export class ProductModel extends CoreModel<ProductModel> {
 
   @HasMany(() => InvoiceProductModel)
   invoiceProduct: InvoiceProductModel;
+
+  @Column
+  vat: Number;
 }

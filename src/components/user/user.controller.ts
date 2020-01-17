@@ -3,7 +3,7 @@ import { UserModel } from './model/user.model';
 import { IUser } from './model/user.interface';
 import { UserDao } from './dao/user.dao';
 
-export class UserController extends CoreController<UserModel, IUser, UserDao> {
+export class UserController extends CoreController<UserModel, IUser, { [key: string]: any }, UserDao> {
   constructor(private userDao: UserDao) {
     super(userDao);
   }

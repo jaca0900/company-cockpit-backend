@@ -33,7 +33,7 @@ export class RoutesManager {
       new MainRouter(app), // all routes imported after this one will require auth to access
       new UserRouter(app, userController),
       new CompanyRouter(app, companyController, userCompanyController),
-      new InvoiceRouter(app, invoiceController),
+      new InvoiceRouter(app, invoiceController, companyController),
       new ProductRouter(app, productController)
     ];
   }

@@ -49,6 +49,12 @@ CREATE TABLE IF NOT EXISTS invoice(
     buyer_id BIGINT UNSIGNED NOT NULL,
     total_netto DOUBLE,
     total_brutto DOUBLE,
+    pay_date DATETIME,
+    creation_date DATETIME,
+    sell_date DATETIME,
+    invoice_number VARCHAR(50),
+    account_number VARCHAR(50),
+    payment_Method VARCHAR(50),
     type VARCHAR(50),
     FOREIGN KEY(seller_id) REFERENCES company(id),
     FOREIGN KEY(buyer_id) REFERENCES company(id)
@@ -59,7 +65,8 @@ CREATE TABLE IF NOT EXISTS product(
     id SERIAL PRIMARY KEY,
     name VARCHAR(50),
     unit VARCHAR(50),
-    unit_price DOUBLE
+    unit_price DOUBLE,
+    vat integer
 )ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS invoice_product(

@@ -4,6 +4,6 @@ import { ICore } from "../../core/model";
 export interface IInvoiceProduct extends ICore {
   invoice_id: Number,
   product_id?: Number;
-  invoiceProduct: IProduct;
+  product: IProduct;
   units: number;
 }

@@ -2,7 +2,7 @@ import { CoreModel, ICore, ISequelizeModel } from "../model/index";
 import { Table, Column } from "sequelize-typescript";
 import { ModelMaper } from "../model/model.mapper";
 
-export class CoreDao<M extends CoreModel<M>, I extends ICore> {
+export class CoreDao<M extends CoreModel<M>, I extends ICore, V> {
 
   constructor (
     private Model: ISequelizeModel<M, I>) {}
@@ -19,14 +19,14 @@ export class CoreDao<M extends CoreModel<M>, I extends ICore> {
     });
   }
 
-  public findOne(options: { [key: string]: any }): Promise<I> {
+  public findOne(options: { [key: string]: any }): Promise<V> {
     return this.Model.findOne(options)
-      .then(res => res ? ModelMaper.modelToInterFace<I>(res.dataValues) : null)
+      .then(res => res ? ModelMaper.modelToInterFace<V>(res.dataValues) : null)
   }
 
-  public findAll(options: { [key: string]: any }): Promise<I[]> {
+  public findAll(options: { [key: string]: any }): Promise<V[]> {
     return this.Model.findAll(options)
-      .then(res => res.map(r => ModelMaper.modelToInterFace<I>(r.dataValues)));
+      .then(res => res.map(r => ModelMaper.modelToInterFace<V>(r.dataValues)));
   }
 
   public destroy(options: { [key: string]: any }): Promise<Number> {

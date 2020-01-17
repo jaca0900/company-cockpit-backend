@@ -3,7 +3,7 @@ import { CoreModel } from "./core.model";
 
 export class ModelMaper {
 
-  public static interfaceToModel<I extends ICore>(iData): I {
+  public static interfaceToModel<I>(iData): I {
     const mData = <I>{};
 
     for (let key in iData) {
@@ -24,7 +24,7 @@ export class ModelMaper {
     return mData;
   }
 
-  public static modelToInterFace<I extends ICore>(mData): I {
+  public static modelToInterFace<I>(mData): I {
     const iData = <I>{};
 
     for (let key in mData) {
