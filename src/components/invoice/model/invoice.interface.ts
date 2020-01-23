@@ -15,5 +15,5 @@ export interface IInvoice extends ICore {
   sell_date: Date;
   invoice_number: string;
   account_number: string;
-  payment_Method: string;
+  payment_method: string;
 }

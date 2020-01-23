@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="CompanyManager">
+        <table_structure name="company">
+                <field Field="id" Type="bigint(20) unsigned" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+                <field Field="nip" Type="varchar(60)" Null="NO" Key="UNI" Extra="" Comment="" />
+                <field Field="company_name" Type="varchar(60)" Null="YES" Key="" Extra="" Comment="" />
+                <field Field="address" Type="varchar(60)" Null="YES" Key="" Extra="" Comment="" />
+                <field Field="is_owned_by_user" Type="tinyint(1)" Null="YES" Key="" Extra="" Comment="" />
+                <key Table="company" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" C
+                  ardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <key Table="company" Non_unique="0" Key_name="id" Seq_in_index="1" Column_name="id" Collation="A" Cardin
+                  ality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <key Table="company" Non_unique="0" Key_name="nip" Seq_in_index="1" Column_name="nip" Collation="A" Card
+                  inality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <options Name="company" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Da
+                  ta_length="16384" Max_data_length="0" Index_length="32768" Data_free="0" Auto_increment="1" Create_time="2020-01-18 07:3
+                  7:25" Collation="latin1_swedish_ci" Create_options="" Comment="" />
+        </table_structure>
+        <table_data name="company">
+        </table_data>
+        <table_structure name="invoice">
+                <field Field="id" Type="bigint(20) unsigned" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+                <field Field="seller_id" Type="bigint(20) unsigned" Null="NO" Key="MUL" Extra="" Comment="" />
+                <field Field="buyer_id" Type="bigint(20) unsigned" Null="NO" Key="MUL" Extra="" Comment="" />
+                <field Field="total_netto" Type="double" Null="YES" Key="" Extra="" Comment="" />
+                <field Field="total_brutto" Type="double" Null="YES" Key="" Extra="" Comment="" />
+                <field Field="pay_date" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+                <field Field="creation_date" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+                <field Field="sell_date" Type="datetime" Null="YES" Key="" Extra="" Comment="" />
+                <field Field="invoice_number" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+                <field Field="account_number" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+                <field Field="payment_method" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+                <field Field="type" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+                <key Table="invoice" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" C
+                  ardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <key Table="invoice" Non_unique="0" Key_name="id" Seq_in_index="1" Column_name="id" Collation="A" Cardin
+                  ality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <key Table="invoice" Non_unique="1" Key_name="seller_id" Seq_in_index="1" Column_name="seller_id" Collat
+                  ion="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <key Table="invoice" Non_unique="1" Key_name="buyer_id" Seq_in_index="1" Column_name="buyer_id" Collatio
+                  n="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <options Name="invoice" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Da
+                  ta_length="16384" Max_data_length="0" Index_length="49152" Data_free="0" Auto_increment="1" Create_time="2020-01-18 07:3
+                  7:25" Collation="latin1_swedish_ci" Create_options="" Comment="" />
+        </table_structure>
+        <table_data name="invoice">
+        </table_data>
+        <table_structure name="invoice_product">
+                <field Field="id" Type="bigint(20) unsigned" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+                <field Field="invoice_id" Type="bigint(20) unsigned" Null="NO" Key="" Extra="" Comment="" />
+                <field Field="product_id" Type="bigint(20) unsigned" Null="NO" Key="" Extra="" Comment="" />
+                <field Field="units" Type="int(11)" Null="YES" Key="" Extra="" Comment="" />
+                <key Table="invoice_product" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collati
+                  on="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <key Table="invoice_product" Non_unique="0" Key_name="id" Seq_in_index="1" Column_name="id" Collation="A
+                  " Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <options Name="invoice_product" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_lengt
+                  h="0" Data_length="16384" Max_data_length="0" Index_length="16384" Data_free="0" Auto_increment="1" Create_time="2020-01
+                  -18 07:37:25" Collation="latin1_swedish_ci" Create_options="" Comment="" />
+        </table_structure>
+        <table_data name="invoice_product">
+        </table_data>
+        <table_structure name="pkd">
+                <field Field="id" Type="bigint(20) unsigned" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+                <field Field="code" Type="varchar(5)" Null="NO" Key="" Extra="" Comment="" />
+                <field Field="description" Type="varchar(255)" Null="YES" Key="" Extra="" Comment="" />
+                <field Field="vat" Type="int(11)" Null="YES" Key="" Extra="" Comment="" />
+                <key Table="pkd" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardi
+                  nality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <key Table="pkd" Non_unique="0" Key_name="id" Seq_in_index="1" Column_name="id" Collation="A" Cardinalit
+                  y="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <options Name="pkd" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_l
+                  ength="16384" Max_data_length="0" Index_length="16384" Data_free="0" Auto_increment="1" Create_time="2020-01-18 07:37:25
+                  " Collation="latin1_swedish_ci" Create_options="" Comment="" />
+        </table_structure>
+        <table_data name="pkd">
+        </table_data>
+        <table_structure name="pkd_company">
+                <field Field="id" Type="bigint(20) unsigned" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+                <field Field="pkd_id" Type="bigint(20) unsigned" Null="NO" Key="MUL" Extra="" Comment="" />
+                <field Field="company_id" Type="bigint(20) unsigned" Null="NO" Key="MUL" Extra="" Comment="" />
+                <key Table="pkd_company" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="
+                  A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <key Table="pkd_company" Non_unique="0" Key_name="id" Seq_in_index="1" Column_name="id" Collation="A" Ca
+                  rdinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <key Table="pkd_company" Non_unique="1" Key_name="pkd_id" Seq_in_index="1" Column_name="pkd_id" Collatio
+                  n="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <key Table="pkd_company" Non_unique="1" Key_name="company_id" Seq_in_index="1" Column_name="company_id" 
+                  Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <options Name="pkd_company" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0
+                  " Data_length="16384" Max_data_length="0" Index_length="49152" Data_free="0" Auto_increment="1" Create_time="2020-01-18 
+                  07:37:25" Collation="latin1_swedish_ci" Create_options="" Comment="" />
+        </table_structure>
+        <table_data name="pkd_company">
+        </table_data>
+        <table_structure name="product">
+                <field Field="id" Type="bigint(20) unsigned" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+                <field Field="name" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+                <field Field="unit" Type="varchar(50)" Null="YES" Key="" Extra="" Comment="" />
+                <field Field="unit_price" Type="double" Null="YES" Key="" Extra="" Comment="" />
+                <field Field="vat" Type="int(11)" Null="YES" Key="" Extra="" Comment="" />
+                <key Table="product" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" C
+                  ardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <key Table="product" Non_unique="0" Key_name="id" Seq_in_index="1" Column_name="id" Collation="A" Cardin
+                  ality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <options Name="product" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Da
+                  ta_length="16384" Max_data_length="0" Index_length="16384" Data_free="0" Auto_increment="1" Create_time="2020-01-18 07:3
+                  7:25" Collation="latin1_swedish_ci" Create_options="" Comment="" />
+        </table_structure>
+        <table_data name="product">
+        </table_data>
+        <table_structure name="user">
+                <field Field="id" Type="bigint(20) unsigned" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+                <field Field="login" Type="varchar(20)" Null="NO" Key="" Extra="" Comment="" />
+                <field Field="password" Type="varchar(50)" Null="NO" Key="" Extra="" Comment="" />
+                <field Field="e_mail" Type="varchar(50)" Null="NO" Key="" Extra="" Comment="" />
+                <field Field="first_name" Type="varchar(20)" Null="NO" Key="" Extra="" Comment="" />
+                <field Field="last_name" Type="varchar(50)" Null="NO" Key="" Extra="" Comment="" />
+                <key Table="user" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Card
+                  inality="1" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <key Table="user" Non_unique="0" Key_name="id" Seq_in_index="1" Column_name="id" Collation="A" Cardinali
+                  ty="1" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                                  <options Name="user" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="1" Avg_row_length="16384" D
+                  ata_length="16384" Max_data_length="0" Index_length="16384" Data_free="0" Auto_increment="2" Create_time="2020-01-18 07:
+                  37:25" Update_time="2020-01-18 07:37:26" Collation="latin1_swedish_ci" Create_options="" Comment="" />
+        </table_structure>
+        <table_data name="user">
+        <row>
+                <field name="id">1</field>
+                <field name="login">jabedn</field>
+                <field name="password">pass</field>
+                <field name="e_mail">jaca09001@gmail.com</field>
+                <field name="first_name">Jacek</field>
+                <field name="last_name">Bednarczyk</field>
+        </row>
+        </table_data>
+        <table_structure name="user_company">
+                <field Field="id" Type="bigint(20) unsigned" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+                <field Field="user_id" Type="bigint(20) unsigned" Null="NO" Key="MUL" Extra="" Comment="" />
+                <field Field="company_id" Type="bigint(20) unsigned" Null="NO" Key="MUL" Extra="" Comment="" />
+                <key Table="user_company" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation=
+                  "A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <key Table="user_company" Non_unique="0" Key_name="id" Seq_in_index="1" Column_name="id" Collation="A" C
+                  ardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <key Table="user_company" Non_unique="1" Key_name="user_id" Seq_in_index="1" Column_name="user_id" Colla
+                  tion="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <key Table="user_company" Non_unique="1" Key_name="company_id" Seq_in_index="1" Column_name="company_id"
+                  Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+                <options Name="user_company" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="
+                  0" Data_length="16384" Max_data_length="0" Index_length="49152" Data_free="0" Auto_increment="1" Create_time="2020-01-18
+                  07:37:25" Collation="latin1_swedish_ci" Create_options="" Comment="" />
+        </table_structure>
+        <table_data name="user_company">
+        </table_data>
+</database>
+</mysqldump>

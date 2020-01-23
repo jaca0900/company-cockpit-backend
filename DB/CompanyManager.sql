@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS invoice(
     sell_date DATETIME,
     invoice_number VARCHAR(50),
     account_number VARCHAR(50),
-    payment_Method VARCHAR(50),
+    payment_method VARCHAR(50),
     type VARCHAR(50),
     FOREIGN KEY(seller_id) REFERENCES company(id),
     FOREIGN KEY(buyer_id) REFERENCES company(id)
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS product(
     name VARCHAR(50),
     unit VARCHAR(50),
     unit_price DOUBLE,
-    vat integer
+    vat DOUBLE
 )ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS invoice_product(
@@ -77,3 +77,5 @@ CREATE TABLE IF NOT EXISTS invoice_product(
 )ENGINE=InnoDB;
 
 INSERT INTO `user` (e_mail, first_name, id, last_name, login, password) VALUES ("jaca09001@gmail.com", "Jacek","1","Bednarczyk","jabedn","pass");
+
+Emisja dokumentów księgowych
