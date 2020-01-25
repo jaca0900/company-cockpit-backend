@@ -10,4 +10,10 @@ export interface IInvoice extends ICore {
   invoiceProducts: IInvoiceProduct[];
   total_netto: number;
   total_brutto: number;
+  pay_date: Date;
+  creation_date: Date;
+  sell_date: Date;
+  invoice_number: string;
+  account_number: string;
+  payment_method: string;
 }

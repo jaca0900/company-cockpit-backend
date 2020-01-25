@@ -3,7 +3,7 @@ import { UserModel } from "../model/user.model";
 import { IUser } from "../model/user.interface";
 import { ISequelizeModel } from "../../core/model";
 
-export class UserDao extends CoreDao<UserModel, IUser> {
+export class UserDao extends CoreDao<UserModel, IUser, { [key: string]: any }> {
   constructor() {
     super(<ISequelizeModel<UserModel, IUser>> UserModel);
   }

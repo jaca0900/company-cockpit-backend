@@ -3,7 +3,7 @@ import { InvoiceProductModel } from "../model/invoiceProduct.model";
 import { IInvoiceProduct } from "../model/invoiceProduct.interface";
 import { ISequelizeModel } from "../../core/model";
 
-export class InvoiceProductDao extends CoreDao<InvoiceProductModel, IInvoiceProduct> {
+export class InvoiceProductDao extends CoreDao<InvoiceProductModel, IInvoiceProduct, { [key: string]: any }> {
   constructor() {
     super(<ISequelizeModel<InvoiceProductModel, IInvoiceProduct>> InvoiceProductModel);
   }

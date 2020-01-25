@@ -4,4 +4,5 @@ export interface IProduct extends ICore {
   name: string;
   unit: string;
   unit_price: Number;
+  vat: Number;
 }

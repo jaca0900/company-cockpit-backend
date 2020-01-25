@@ -21,7 +21,7 @@ export class InvoiceModel extends CoreModel<InvoiceModel> {
   buyer: CompanyModel;
 
   @HasMany(() => InvoiceProductModel)
-  invoiceProduct: InvoiceProductModel;
+  invoiceProducts: InvoiceProductModel[];
 
   // foreign keys hasOne
   @Column
@@ -29,4 +29,22 @@ export class InvoiceModel extends CoreModel<InvoiceModel> {
 
   @Column
   total_brutto: number;
+
+  @Column
+  pay_date: Date;
+
+  @Column
+  creation_date: Date;
+
+  @Column
+  sell_date: Date;
+
+  @Column
+  invoice_number: string;
+
+  @Column
+  account_number: string;
+
+  @Column
+  payment_method: string;
 }

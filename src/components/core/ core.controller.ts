@@ -4,15 +4,16 @@ import { CoreDao } from './dao/core.dao'
 export class CoreController
   <M extends CoreModel<M>, 
   I extends ICore,
-  D extends CoreDao<M, I>> {
+  V,
+  D extends CoreDao<M, I, V>> {
 
   constructor(private dao: D) {}
 
-  public getAll(): Promise<I[]> {
+  public getAll(): Promise<V[]> {
     return this.dao.findAll({});
   }
 
-  public query(options: { [key: string]: any}): Promise<I[]> {
+  public query(options: { [key: string]: any}): Promise<V[]> {
     return this.dao.findAll(options);
   }
 
@@ -20,7 +21,7 @@ export class CoreController
     return this.dao.save(data);
   }
 
-  public update(id: number, data: I): Promise<[ number, I[] ]> {
+  public update(id: Number, data: I): Promise<I> {
     return this.dao.update(id, data);
   }
 

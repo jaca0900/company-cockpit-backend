@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS company(
 	id SERIAL PRIMARY KEY,
     nip VARCHAR(60) UNIQUE NOT NULL,
     company_name VARCHAR(60),
-    address VARCHAR(60)
+    address VARCHAR(60),
+    is_owned_by_user BOOLEAN
 )ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS user(
@@ -22,11 +23,9 @@ CREATE TABLE IF NOT EXISTS user(
 CREATE TABLE IF NOT EXISTS user_company(
     id SERIAL PRIMARY KEY,
     user_id BIGINT UNSIGNED NOT NULL,
-    own_company_id BIGINT UNSIGNED NOT NULL,
-    contractor_id BIGINT UNSIGNED NOT NULL,
+    company_id BIGINT UNSIGNED NOT NULL,
     FOREIGN KEY(user_id) REFERENCES user(id),
-    FOREIGN KEY(own_company_id) REFERENCES company(id),
-    FOREIGN KEY(contractor_id) REFERENCES company(id)
+    FOREIGN KEY(company_id) REFERENCES company(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS pkd(
@@ -50,6 +49,12 @@ CREATE TABLE IF NOT EXISTS invoice(
     buyer_id BIGINT UNSIGNED NOT NULL,
     total_netto DOUBLE,
     total_brutto DOUBLE,
+    pay_date DATETIME,
+    creation_date DATETIME,
+    sell_date DATETIME,
+    invoice_number VARCHAR(50),
+    account_number VARCHAR(50),
+    payment_method VARCHAR(50),
     type VARCHAR(50),
     FOREIGN KEY(seller_id) REFERENCES company(id),
     FOREIGN KEY(buyer_id) REFERENCES company(id)
@@ -60,7 +65,8 @@ CREATE TABLE IF NOT EXISTS product(
     id SERIAL PRIMARY KEY,
     name VARCHAR(50),
     unit VARCHAR(50),
-    unit_price DOUBLE
+    unit_price DOUBLE,
+    vat DOUBLE
 )ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS invoice_product(
@@ -69,3 +75,5 @@ CREATE TABLE IF NOT EXISTS invoice_product(
     product_id BIGINT UNSIGNED NOT NULL,
     units INTEGER
 )ENGINE=InnoDB;
+
+INSERT INTO `user` (e_mail, first_name, id, last_name, login, password) VALUES ("jaca09001@gmail.com", "Jacek","1","Bednarczyk","jabedn","pass");

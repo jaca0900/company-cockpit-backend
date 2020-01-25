@@ -3,7 +3,7 @@ import { ExpenseModel } from './model/expense.model';
 import { IExpense } from './model/expense.interface';
 import { ExpenseDao } from './dao/expense.dao';
 
-export class ExpenseController extends CoreController<ExpenseModel, IExpense, ExpenseDao> {
+export class ExpenseController extends CoreController<ExpenseModel, IExpense, { [key: string]: any }, ExpenseDao> {
   constructor(private expenseDao: ExpenseDao) {
     super(expenseDao);
   }

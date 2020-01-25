@@ -11,7 +11,7 @@ export class InvoiceProductModel extends CoreModel<InvoiceModel>{
   product_id: number;
 
   @BelongsTo(() => ProductModel)
-  invoiceProduct: ProductModel;
+  product: ProductModel;
 
   @ForeignKey(() => InvoiceModel)
   @Column
@@ -20,5 +20,6 @@ export class InvoiceProductModel extends CoreModel<InvoiceModel>{
   @BelongsTo(() => InvoiceModel)
   invoice: InvoiceModel;
 
+  @Column
   units: number
 }
