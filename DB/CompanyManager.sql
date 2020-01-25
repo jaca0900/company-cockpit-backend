@@ -77,5 +77,3 @@ CREATE TABLE IF NOT EXISTS invoice_product(
 )ENGINE=InnoDB;
 
 INSERT INTO `user` (e_mail, first_name, id, last_name, login, password) VALUES ("jaca09001@gmail.com", "Jacek","1","Bednarczyk","jabedn","pass");
-
-Emisja dokumentów księgowych

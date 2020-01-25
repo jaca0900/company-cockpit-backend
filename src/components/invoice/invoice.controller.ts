@@ -33,16 +33,16 @@ export class InvoiceController extends CoreController<InvoiceModel, IInvoice, { 
     });
   }
 
-  public async save(invoice: IInvoice) {
+  public async upsert(invoice: IInvoice) {
     const DBInvoice = invoice;
     const buyer = invoice.buyer;
     const seller = invoice.seller;
     DBInvoice.buyer_id = buyer.id;
     DBInvoice.seller_id = seller.id;
 
-    const created = await super.save(DBInvoice);
+    const saved =  invoice.id ? await super.update(invoice.id, DBInvoice) : await super.save(DBInvoice);
 
-    const invoiceId = created['null'];
+    const invoiceId = saved['null'] || saved.id;
 
     const invoiceProducts = invoice.invoiceProducts;
 
@@ -52,9 +52,8 @@ export class InvoiceController extends CoreController<InvoiceModel, IInvoice, { 
 
       if (product.id) {
         const products = await this.productDao.update(product.id, product);
-        const prod = products[1][0];
+        const prod = products;
         IP.product_id = prod.id;
-         
       } else {
         const prod = await this.productDao.save(product);
         IP.product_id = prod['null'];
@@ -63,6 +62,6 @@ export class InvoiceController extends CoreController<InvoiceModel, IInvoice, { 
       return IP.id ? this.invoiceProductDao.update(IP.id, IP)[1]: this.invoiceProductDao.save(IP);
     }));
 
-    return created;
+    return saved;
   }
 }

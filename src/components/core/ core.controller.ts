@@ -21,7 +21,7 @@ export class CoreController
     return this.dao.save(data);
   }
 
-  public update(id: number, data: I): Promise<[ number, I[] ]> {
+  public update(id: Number, data: I): Promise<I> {
     return this.dao.update(id, data);
   }
 

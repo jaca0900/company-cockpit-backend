@@ -48,7 +48,9 @@ export class InvoiceRouter implements IRoute {
         }]
       })
         .then((invoices) => res.status(200).json(invoices))
-        .catch((err) => res.status(500).json(err));
+        .catch((err) => {
+          res.status(500).json(err);
+        })
     });
 
     this.router.get('/bySellerId/:id', (req, res) => {
@@ -117,9 +119,12 @@ export class InvoiceRouter implements IRoute {
     this.router.post('/', bodyParser.json(), (req, res) => {
       const invoice: IInvoice = req.body;
 
-      return this.invoiceController.save(invoice)
+      return this.invoiceController.upsert(invoice)
         .then(invoice => res.status(200).json(invoice))
-        .catch(error => res.status(500).json(error));
+        .catch(error => {
+          console.error(error);
+          res.status(500).json(error)
+        });
     });
 
     this.router.put('/:id', bodyParser.json(), (req, res) => {

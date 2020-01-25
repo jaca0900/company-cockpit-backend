@@ -13,10 +13,14 @@ export class CoreDao<M extends CoreModel<M>, I extends ICore, V> {
     return model.save();
   }
 
-  public async update(id: Number, data: I): Promise<[number, I[]]> {
-    return this.Model.update(ModelMaper.interfaceToModel(data), { 
+  public async update(id: Number, data: I): Promise<I> {
+    await this.Model.update(ModelMaper.interfaceToModel(data), {
       where: { id }
     });
+
+    return this.Model.findOne({
+      where: { id }
+    }).then(res => res.dataValues);
   }
 
   public findOne(options: { [key: string]: any }): Promise<V> {
