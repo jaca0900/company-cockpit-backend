@@ -1,6 +1,6 @@
 import * as Express from 'express';
 import { IRoute } from '../models/route.models';
-import { InvoiceController } from '../../components/invoice/index';
+import { InvoiceController } from '../../components/invoice';
 import * as bodyParser from 'body-parser';
 import { IInvoice } from '../../components/invoice/model/invoice.interface';
 import { CompanyController } from '../../components/company';

@@ -1,6 +1,6 @@
 import * as Express from 'express';
 import { IRoute } from '../models/route.models';
-import { CompanyController } from '../../components/company/index';
+import { CompanyController } from '../../components/company';
 import * as bodyParser from 'body-parser';
 import { ICompany } from '../../components/company/model/company.interface';
 import { UserCompanyController } from '../../components/company/userCompany.controller';

@@ -1,4 +1,4 @@
-import { ICore } from ".";
+import { ICore } from "./index";
 import { CoreModel } from "./core.model";
 
 export class ModelMaper {

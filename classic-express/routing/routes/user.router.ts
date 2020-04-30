@@ -1,6 +1,6 @@
 import * as Express from 'express';
 import { IRoute } from '../models/route.models';
-import { UserController } from '../../components/user/index';
+import { UserController } from '../../components/user';
 import * as bodyParser from 'body-parser';
 
 export class UserRouter implements IRoute {

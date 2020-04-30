@@ -1,6 +1,6 @@
 import * as Express from 'express';
-import { RoutesManager } from './src/routing/routes/routes';
-import * as env from './config/environments';
+import { RoutesManager } from './routing/routes/routes';
+import * as env from '../config/environments';
 import * as bodyParser from 'body-parser';
 import {Sequelize} from 'sequelize-typescript';
 // import { CoreModel } from './src/components/core/model/core.model';

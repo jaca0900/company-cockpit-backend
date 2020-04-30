@@ -1,6 +1,6 @@
 import * as Express from 'express';
 import { IRoute } from '../models/route.models';
-import { PkdController } from '../../components/pkd/index';
+import { PkdController } from '../../components/pkd';
 import * as bodyParser from 'body-parser';
 import { IPkd } from '../../components/pkd/model/pkd.interface';
 

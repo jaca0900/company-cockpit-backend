@@ -4,7 +4,7 @@ import { IRoute } from '../models/route.models';
 import { MainRouter } from './main.router';
 import { UserRouter } from './user.router';
 
-import { UserController, UserDao } from '../../components/user/index';
+import { UserController, UserDao } from '../../components/user';
 import { CompanyController, CompanyDao, UserCompanyDao, UserCompanyController } from '../../components/company';
 import { CompanyRouter } from './company.router';
 import { InvoiceDao, InvoiceController } from '../../components/invoice';

@@ -1,4 +1,4 @@
-import { CoreModel, ICore } from './model/index';
+import { CoreModel, ICore } from './model';
 import { CoreDao } from './dao/core.dao'
 
 export class CoreController

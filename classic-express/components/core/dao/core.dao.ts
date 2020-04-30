@@ -1,5 +1,4 @@
-import { CoreModel, ICore, ISequelizeModel } from "../model/index";
-import { Table, Column } from "sequelize-typescript";
+import { CoreModel, ICore, ISequelizeModel } from "../model";
 import { ModelMaper } from "../model/model.mapper";
 
 export class CoreDao<M extends CoreModel<M>, I extends ICore, V> {
